@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class Tank : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float speed = 5;
+    public float rotateSpeed = 90;
+    public KeyCode shootKey;
 
-    // Update is called once per frame
+    public string vertical;
+    public string horizontal;
+
+    public GameObject bullet;
+
     void Update()
     {
-        
+        var ver = Input.GetAxis(vertical);
+        transform.position += transform.forward * ver * speed * Time.deltaTime;
+
+        var hor = Input.GetAxis(horizontal);
+        transform.Rotate(0, rotateSpeed * hor * Time.deltaTime, 0);
+
+        if (Input.GetKeyDown(shootKey))
+        {
+            Instantiate(bullet, transform.position, transform.rotation);
+        }
     }
 }
