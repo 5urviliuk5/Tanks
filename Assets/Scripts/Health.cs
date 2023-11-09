@@ -5,13 +5,16 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public GameObject particle;
+    public int particleCount;
 
     public void Die()
     {
         Destroy(gameObject);  
-        for (int i = 0; i < 5; i++)
+
+        for (int i = 0; i < particleCount; i++)
         {
-            Instantiate(particle, transform.position, transform.rotation);
+            var offset = Vector3.up + Random.insideUnitSphere * 2;
+            Instantiate(particle, transform.position + offset, transform.rotation);
         }
     }
 
