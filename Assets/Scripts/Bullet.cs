@@ -15,4 +15,14 @@ public class Bullet : MonoBehaviour
     {
         transform.position += transform.forward * speed * Time.deltaTime;
     }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        Destroy(gameObject);
+
+        if (other.gameObject.tag == "Boom") 
+        {
+            other.gameObject.GetComponent<Health>().Die();
+        }
+    }
 }
