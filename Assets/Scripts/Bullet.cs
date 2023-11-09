@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
 
         if (other.gameObject.tag == "Boom") 
         {
-            other.gameObject.GetComponent<Health>().Die();
+            other.gameObject.GetComponent<Health>().Damage();
         }
     }
 }
