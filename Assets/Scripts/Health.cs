@@ -7,6 +7,8 @@ public class Health : MonoBehaviour
     public GameObject particle;
     public int particleCount;
     public int hp;
+    public AudioSource destroy;
+    public AudioSource hit;
 
     public void Damage()
     {
@@ -15,6 +17,7 @@ public class Health : MonoBehaviour
         {
             Die();
         }
+        hit.Play();
     }
 
     public void Die()
@@ -26,6 +29,7 @@ public class Health : MonoBehaviour
             var offset = Vector3.up + Random.insideUnitSphere * 2;
             Instantiate(particle, transform.position + offset, transform.rotation);
         }
+        destroy.Play();
     }
 
     void Update()
